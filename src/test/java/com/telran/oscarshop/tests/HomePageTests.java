@@ -5,7 +5,7 @@ import com.telran.oscarshop.pages.ProductPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HomePageTests extends TestBase{
+public class HomePageTests extends TestBase {
 
     @Test
     public void guestCanSelectProductFromMenuTest() {

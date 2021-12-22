@@ -17,15 +17,15 @@ public class PageBase {
 
     public PageBase(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
-    public void click(WebElement element){
+    public void click(WebElement element) {
         element.click();
     }
 
     public void type(WebElement element, String text) {
-        if (text!=null){
+        if (text != null) {
             element.click();
             element.clear();
             element.sendKeys(text);
@@ -39,8 +39,8 @@ public class PageBase {
     }
 
     public void typeWithJSExecutor(WebElement element, int x, int y, String text) {
-        if (text!=null){
-            clickWithJSExecutor(element,x,y);
+        if (text != null) {
+            clickWithJSExecutor(element, x, y);
             element.clear();
             element.sendKeys(text);
         }
@@ -67,7 +67,7 @@ public class PageBase {
         try {
 
             Files.copy(tmp, screenshot);
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -76,32 +76,38 @@ public class PageBase {
 
     public void waitUntilElementToBeClickable(WebElement element, int time) {
         try {
-            new WebDriverWait(driver,time).until(ExpectedConditions.elementToBeClickable(element));
-        }catch (Exception e) {
+            new WebDriverWait(driver, time).until(ExpectedConditions.elementToBeClickable(element));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void waitUntilElementVisible(WebElement element, int time) {
         try {
-            new WebDriverWait(driver,time).until(ExpectedConditions.visibilityOf(element));
-        }catch (Exception e) {
+            new WebDriverWait(driver, time).until(ExpectedConditions.visibilityOf(element));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void waitUntilElementInVisible(WebElement element, int time) {
         try {
-            new WebDriverWait(driver,time).until(ExpectedConditions.invisibilityOf(element));
-        }catch (Exception e) {
+            new WebDriverWait(driver, time).until(ExpectedConditions.invisibilityOf(element));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     public void waitUntilAllElementsVisible(List<WebElement> elements, int time) {
         try {
-            new WebDriverWait(driver,time).until(ExpectedConditions.visibilityOfAllElements(elements));
-        }catch (Exception e) {
+            new WebDriverWait(driver, time).until(ExpectedConditions.visibilityOfAllElements(elements));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public boolean isElementPresent(By locator) {
+        return driver.findElements(locator).size() > 0;
+    }
+
 }
