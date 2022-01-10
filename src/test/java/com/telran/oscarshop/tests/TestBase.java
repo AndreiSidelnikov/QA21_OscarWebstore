@@ -1,5 +1,6 @@
 package com.telran.oscarshop.tests;
 
+import com.telran.oscarshop.helpers.PropertiesLoader;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,6 +19,8 @@ public class TestBase {
 
     WebDriver driver;
 
+    public static String baseUrl = PropertiesLoader.loadProperty("url");
+
     Logger logger = LoggerFactory.getLogger(TestBase.class);
 
 
@@ -30,7 +33,7 @@ public class TestBase {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         //   driver.manage().window().setSize(new Dimension(1920,1000));
-        driver.get("http://selenium1py.pythonanywhere.com");
+        driver.get(baseUrl);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 

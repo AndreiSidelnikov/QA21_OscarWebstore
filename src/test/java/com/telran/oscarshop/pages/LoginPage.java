@@ -24,4 +24,8 @@ public class LoginPage extends PageBase {
         loginBtn.click();
         return this;
     }
+
+    public boolean isItLoginPage() {
+    return loginBtn.isDisplayed();
+    }
 }

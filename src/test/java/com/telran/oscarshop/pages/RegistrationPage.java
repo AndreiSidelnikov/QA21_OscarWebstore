@@ -28,4 +28,8 @@ public class RegistrationPage extends PageBase {
         registerBtn.click();
         return this;
     }
+
+    public boolean isItRegistrationPage() {
+            return registerBtn.isDisplayed();
+        }
 }
